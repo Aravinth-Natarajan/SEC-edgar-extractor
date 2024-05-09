@@ -27,3 +27,9 @@ Then, run the shinyApp.py file and navigate to the corresponding port
 You should have a textbox, fill it with the ticker you want
 
 # Challenges / Future Improvements
+
+The lack of a good LLM. In retrospect I would find a better LLM but GPT-2 did quite poorly on actually extending what I wanted it to do. There are multiple restrictions on its input size, 500 tokens and its output size, 250 tokens, so using the entire set of edgar filings ended up infeasible unfortunately. In the future, I would probably choose to run a model locally or use the OpenAI API.
+
+The SEC Edgar api also throttles quite aggressively so I couldn't test my project more than 10 times an hour. The official website says it allows far more requests than that so I'm not quite sure what the issue is and wasn't able to find documentation on it. Hopefully this doesn't end up being an issue for the users. 
+
+The SEC filings are an extremely large context window for an LLM so it might not make sense to thrust it in so I would probably use BERT or some such PLM first to extract valuable information for example by summarization etc. and then feed it into the LLM with the appropriate context window size.
